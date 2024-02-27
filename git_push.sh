@@ -12,7 +12,7 @@ explain_command(){
 	        ;;
             b ) branch="$OPTARG"
             ;;
-            \?) echo "|-> Usage: $0 [-n name] [-c comment]"
+            \?) echo "|-> Usage: $0 [-c comment]"
             ;;
         esac
     done
@@ -21,6 +21,7 @@ username=$(sed -n 1p TOKEN | tr -d "\n")
 echo $username
 token=$(sed -n 2p TOKEN | tr -d "\n")
 repo_name=$(basename "$PWD")
+explain_command
 if [ -d ".git" ];then
     echo "|-> Push"
     git add .
