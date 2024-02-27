@@ -25,6 +25,7 @@ if [ -d ".git" ];then
     echo "|-> Push"
     git add .
     git commit -m "$comment"
+    git branch -M main
     git remote add origin "https://github.com/$username/$repo_name.git"
     git push origin main
 else
@@ -36,6 +37,7 @@ else
     echo "|-> Create it on Github"
     curl -u "$username:$token" https://api.github.com/user/repos -d '{"name":"'$repo_name'"}'
     echo "|-> Push"
+    git branch -M main
     git remote add origin "https://github.com/$username/$repo_name.git"
     git push origin main
 fi
